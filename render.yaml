@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: spring-stream-backend
+    env: docker
+    rootDir: spring-stream-backend
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATASOURCE_URL
+        value: ${DATASOURCE_URL}  # Set this in Render dashboard or use Render's database
+      - key: DATASOURCE_USER
+        value: ${DATASOURCE_USER}
+      - key: DATASOURCE_PASSWORD
+        value: ${DATASOURCE_PASSWORD}
+    healthCheckPath: /actuator/health  # If you have Spring Boot Actuator
+    disk:
+      name: videos
+      mountPath: /app/videos
+      sizeGB: 10  # Adjust as needed for video storage
+
+  - type: web
+    name: spring-stream-frontend
+    env: static
+    rootDir: spring-stream-frontend
+    buildCommand: npm run build
+    staticPublishPath: dist
