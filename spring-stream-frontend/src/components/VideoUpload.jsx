@@ -12,7 +12,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import videoLogo from "../assets/video-posting.png";
 
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 function VideoUpload() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [meta, setMeta] = useState({
