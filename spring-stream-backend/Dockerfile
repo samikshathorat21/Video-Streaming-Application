@@ -1,5 +1,5 @@
 # Use an official Maven image as the base image for building
-FROM maven:3.9.4-openjdk-21-slim AS build
+FROM maven:3.9.14-eclipse-temurin-21 AS build
 
 # Set the working directory in the container
 WORKDIR /app
@@ -15,7 +15,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Use an official OpenJDK runtime as a parent image
-FROM openjdk:21-jre-slim
+FROM eclipse-temurin:21-jre
 
 # Set the working directory in the container
 WORKDIR /app
