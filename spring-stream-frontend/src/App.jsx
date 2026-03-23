@@ -5,7 +5,7 @@ import "./App.css";
 import VideoPlayer from "./components/VideoPlayer";
 import VideoUpload from "./components/VideoUpload";
 
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
 
 function App() {
   const [count, setCount] = useState(0);
