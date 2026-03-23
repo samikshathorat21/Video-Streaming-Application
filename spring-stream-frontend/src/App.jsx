@@ -1,9 +1,11 @@
-import { useState } from "react";
-import "./App.css";
-import VideoUpload from "./components/VideoUpload";
-import { Toaster } from "react-hot-toast";
-import VideoPlayer from "./components/VideoPlayer";
 import { Button, TextInput } from "flowbite-react";
+import { useState } from "react";
+import { Toaster } from "react-hot-toast";
+import "./App.css";
+import VideoPlayer from "./components/VideoPlayer";
+import VideoUpload from "./components/VideoUpload";
+
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 function App() {
   const [count, setCount] = useState(0);
@@ -28,7 +30,7 @@ function App() {
 
             <div>
               <VideoPlayer
-                src={`http://localhost:8080/api/v1/videos/${videoId}/master.m3u8`}
+                src={`${API_BASE_URL}/api/v1/videos/${videoId}/master.m3u8`}
               />
             </div>
           </div>

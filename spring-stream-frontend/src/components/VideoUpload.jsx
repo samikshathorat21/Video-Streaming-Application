@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import videoLogo from "../assets/video-posting.png";
+import axios from "axios";
 import {
+  Alert,
   Button,
   Card,
   Label,
-  FileInput,
-  TextInput,
-  Textarea,
   Progress,
-  Alert,
+  TextInput,
+  Textarea
 } from "flowbite-react";
-import axios from "axios";
+import { useState } from "react";
 import toast from "react-hot-toast";
+import videoLogo from "../assets/video-posting.png";
+
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 function VideoUpload() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [meta, setMeta] = useState({
@@ -67,7 +68,7 @@ function VideoUpload() {
       formData.append("file", selectedFile);
 
       let response = await axios.post(
-        `http://localhost:8080/api/v1/videos`,
+        `${API_BASE_URL}/api/v1/videos`,
         formData,
         {
           headers: {
